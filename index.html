@@ -34,16 +34,14 @@
 
   <!-- NAV -->
   <nav class="fixed top-8 left-1/2 -translate-x-1/2 z-50">
-    <div class="bg-black rounded-full px-2 py-2 flex items-center gap-1">
-      <button data-section="inicio" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Inicio</button>
-      <button data-section="formacion" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Formación</button>
-      <!-- Habilidades: AHORA SÍ clic -->
-      <button data-section="habilidades" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Habilidades</button>
-      <button data-section="proyectos" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Proyectos</button>
-      <button data-section="publicaciones" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Publicaciones</button>
-      <!-- Avisos (nuevo) -->
-      <button data-section="avisos" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Avisos</button>
-      <button data-section="contacto" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Hablemos</button>
+    <div class="bg-black rounded-full px-2 py-2 flex items-center gap-1 max-w-[94vw] overflow-x-auto no-scrollbar">
+      <button data-section="inicio"        class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Inicio</button>
+      <button data-section="formacion"     class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Formación</button>
+      <button data-section="habilidades"   class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Habilidades</button>
+      <button data-section="proyectos"     class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Proyectos</button>
+      <button data-section="publicaciones" class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Publicaciones</button>
+      <button data-section="avisos"        class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Avisos</button>
+      <button data-section="contacto"      class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Hablemos</button>
     </div>
   </nav>
 
@@ -62,18 +60,21 @@
 
       <!-- Semicírculo + Foto -->
       <div class="relative w-full flex justify-center items-end -mt-[27rem] md:-mt-[31rem] lg:-mt-[35rem]">
+        <!-- Semicírculo responsive (corregido w-/h-) -->
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2
-                    w=[430px] h=[225px] md:w-[540px] md:h-[270px] lg:w-[670px] lg:h-[320px]
+                    w-[85vw] max-w-[430px] h-[38vw] max-h-[225px]
+                    md:w-[540px] md:h-[270px] lg:w-[670px] lg:h-[320px]
                     bg-orange-400 rounded-t-full overflow-hidden z-10"></div>
 
+        <!-- Foto responsive -->
         <div class="relative z-20
-                    w-[500px] md:w-[620px] lg:w-[760px]
-                    h-[740px] md:h-[900px] lg:h-[1040px]
+                    w-[92vw] max-w-[500px] md:w-[620px] lg:w-[760px]
+                    h-auto
                     flex items-end justify-center translate-y-[2px] md:translate-y-[4px] lg:translate-y-[6px]">
           <img
             src="https://drive.google.com/uc?export=view&id=1MbRAZ7uEzTfxZoJK58ThxBr24tI0S_TI"
             alt="Luna - Developer & Data Scientist"
-            class="w-full h-full object-contain object-bottom select-none"
+            class="w-full h-auto object-contain object-bottom select-none"
             style="mix-blend-mode:multiply; filter:none!important; box-shadow:none!important;"
           />
         </div>

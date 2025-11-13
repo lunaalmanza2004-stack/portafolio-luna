@@ -3,9 +3,9 @@
    ========================================================= */
 
 /* ===== Base ===== */
-/* Usamos animación propia en JS, así que dejamos el comportamiento por defecto */
 html { scroll-behavior: auto; }
 * { box-sizing: border-box; }
+html, body { overflow-x: hidden; }   /* evita scroll lateral por 1px */
 button, a { -webkit-tap-highlight-color: transparent; }
 
 /* ===== Accesibilidad ===== */
@@ -21,15 +21,24 @@ input,select,textarea,button{ accent-color:#111827; }
   color:#fff;
   transition:background-color .2s ease, color .2s ease, transform .12s ease;
   border-radius:9999px;
-  margin:0 22px;
-  min-width:120px;                 /* todos con el mismo ancho visual */
+  margin:0 10px;            /* más compacto en móvil */
+  min-width:88px;           /* base móvil: 88px */
   padding:.5rem 1.5rem;
+}
+@media (min-width: 768px){
+  .nav-btn{
+    margin:0 22px;          /* desktop como antes */
+    min-width:120px;        /* desktop 120px */
+  }
 }
 .nav-btn:hover{ background:#111827; }
 .nav-btn.active{ background:#f97316; color:#fff; }
 .nav-btn:active{ transform:translateY(1px); }
-/* Habilidades: no clic pero mismo look */
 .nav-btn--disabled{ pointer-events:none; }
+
+/* Oculta la barra del scroll, pero permite desplazar con el dedo */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* ===== Reutilizables ===== */
 .hover-card:hover { box-shadow: 0 12px 30px rgba(0,0,0,.12); }
@@ -44,7 +53,7 @@ input,select,textarea,button{ accent-color:#111827; }
 .chip i{width:.75rem;height:.75rem}
 .chip:hover{background:#f97316;color:#fff}
 
-/* ===== Habilidades (SIN interacción) ===== */
+/* ===== Habilidades (SIN interacción en celdas) ===== */
 .skill{
   padding:1.5rem;text-align:center;background:#fff;
   border:2px solid #e5e7eb;border-radius:.75rem;color:inherit;
@@ -70,7 +79,7 @@ input,select,textarea,button{ accent-color:#111827; }
 }
 .input:focus{outline:none;border-color:#9ca3af;box-shadow:0 0 0 4px rgba(156,163,175,.25)}
 
-/* ===== Estrellas (opiniones) ===== */
+/* ===== Estrellas (opiniones históricas; inofensivo) ===== */
 .rating-stars{display:inline-flex;gap:2px}
 .rating-stars .star{
   font-size:1.25rem;line-height:1;color:#d1d5db;cursor:pointer;
@@ -81,7 +90,7 @@ input,select,textarea,button{ accent-color:#111827; }
 .rating-stars .star:hover ~ .star{color:#f97316}
 .rating-stars .star:active{transform:scale(.9)}
 
-/* ===== Opiniones: scroll ===== */
+/* ===== Opiniones: scroll (no se usa, puede quedar) ===== */
 .opiniones-scroll{
   display:grid;grid-auto-rows:max-content;gap:12px;max-height:420px;
   overflow-y:auto;padding-right:.5rem;
@@ -135,4 +144,3 @@ input,select,textarea,button{ accent-color:#111827; }
   border:2px solid rgba(255,255,255,.18);min-height:200px;
 }
 .contact-card:hover{ background:#f97316; transform:scale(1.05); }
-
