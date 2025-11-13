@@ -1,7 +1,7 @@
-﻿// =========================================================
-// main.js â€” Portafolio Luna Almanza (COMPLETO)
-// - BotÃ³n "Opiniones" soportado (secciÃ³n #6)
-// - Scroll mÃ¡s LENTO y preciso (1.2â€“1.3s con easing)
+// =========================================================
+// main.js — Portafolio Luna Almanza (COMPLETO)
+// - Botón "Opiniones" soportado (sección #6)
+// - Scroll más LENTO y preciso (1.2–1.3s con easing)
 // =========================================================
 'use strict';
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ====== Scroll personalizado (mÃ¡s lento/preciso) ======
+  // ====== Scroll personalizado (más lento/preciso) ======
   const SCROLL_MS = 1300;                   // velocidad de desplazamiento
   const EASE = t => t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; // easeInOutCubic
 
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function scrollToSection(id, offsetPx = 0) {
     const el = document.getElementById(id);
     if (!el) return;
-    // PosiciÃ³n absoluta del elemento
+    // Posición absoluta del elemento
     const rect = el.getBoundingClientRect();
     const y = window.pageYOffset + rect.top - offsetPx;
     smoothScrollTo(y);
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const id = btn.dataset.section;
-      // offset pequeÃ±o por estÃ©tica; tu header ya tiene padding, asÃ­ que 0 estÃ¡ bien
+      // offset pequeño por estética; tu header ya tiene padding, así que 0 está bien
       scrollToSection(id, 0);
     });
   });
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
   const io = new IntersectionObserver((entries) => {
-    // elegimos la secciÃ³n con mayor ratio visible
+    // elegimos la sección con mayor ratio visible
     let best = null, bestRatio = 0;
     for (const en of entries) {
       if (en.isIntersecting && en.intersectionRatio > bestRatio) {
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (best) setActive(best.id);
   }, {
-    // Hace el "activo" mÃ¡s estable mientras se centra la secciÃ³n
+    // Hace el "activo" más estable mientras se centra la sección
     root: null,
     threshold: Array.from({length: 21}, (_,i)=>i/20),
     rootMargin: "-25% 0px -55% 0px"
@@ -169,10 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return el?.dataset.title || pid || 'Proyecto';
   }
   function initialsFromName(name) {
-    if (!name) return 'ðŸ™‚';
+    if (!name) return '🙂';
     const parts = name.trim().split(/\s+/).slice(0,2);
     const init = parts.map(p => p?.[0]?.toUpperCase() || '').join('');
-    return init || 'ðŸ™‚';
+    return init || '🙂';
   }
   function makeAvatarEl(name, avatarUrl) {
     const wrap = document.createElement('div');
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (data.length === 0) {
       const empty = document.createElement('div');
       empty.className = 'p-4 border rounded-lg bg-white hover-card';
-      empty.textContent = 'AÃºn no hay opiniones. Â¡SÃ© la primera en opinar! ðŸ™‚';
+      empty.textContent = 'Aún no hay opiniones. ¡Sé la primera en opinar! 🙂';
       list.appendChild(empty); return;
     }
     for (const op of data) {
@@ -233,13 +233,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const head = document.createElement('div'); head.className = 'flex items-center justify-between mb-1';
       const titleEl = document.createElement('div'); titleEl.className = 'font-semibold'; titleEl.textContent = projectTitle(op.project);
       const starsEl = document.createElement('div'); starsEl.className = 'text-orange-500';
-      const rating = Number(op.rating || 0); starsEl.textContent = 'â˜…'.repeat(rating) + 'â˜†'.repeat(5 - rating);
+      const rating = Number(op.rating || 0); starsEl.textContent = '★'.repeat(rating) + '☆'.repeat(5 - rating);
 
       head.appendChild(titleEl); head.appendChild(starsEl);
 
       const meta = document.createElement('div'); meta.className = 'text-xs text-gray-500 mb-2';
-      const name = (op.name && op.name.trim()) ? op.name.trim() : 'AnÃ³nimo';
-      meta.textContent = `${new Date(op.ts).toLocaleDateString()} â€” ${name}`;
+      const name = (op.name && op.name.trim()) ? op.name.trim() : 'Anónimo';
+      meta.textContent = `${new Date(op.ts).toLocaleDateString()} — ${name}`;
 
       const text = document.createElement('p'); text.className = 'text-gray-800 whitespace-pre-line'; text.textContent = op.text || '';
 
@@ -291,8 +291,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 2,
-      title: "Â¿Por quÃ© Ï€ (pi) es un nÃºmero irracional?",
-      description: "Ï€ es la relaciÃ³n entre la circunferencia y el diÃ¡metro; repasa por quÃ© no puede expresarse como fracciÃ³n y quÃ© implica en matemÃ¡ticas.",
+      title: "¿Por qué π (pi) es un número irracional?",
+      description: "π es la relación entre la circunferencia y el diámetro; repasa por qué no puede expresarse como fracción y qué implica en matemáticas.",
       author: "Luna Almanza",
       date: "7 Nov, 2025",
       image: "https://drive.google.com/file/d/1MS0aiPUkf2Bv5WklOHuDe53r4sHfed7Z/view?usp=sharing",
@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 3,
       title: "ColorSense",
-      description: "Hecho para apoyar a personas con discapacidad visual. â™¿ðŸ”Š",
+      description: "Hecho para apoyar a personas con discapacidad visual. ♿🔊",
       author: "Luna Almanza",
       date: "7 Nov, 2025",
       image: "https://drive.google.com/file/d/1ogTHLIlu0YS5QObrTXuuCKxOKFfqxJdx/view?usp=sharing",
@@ -309,8 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 4,
-      title: "UX/UI: DiseÃ±ando Experiencias",
-      description: "Analizador de DiseÃ±o Web â€” WCAG (Web Content Accessibility Guidelines).",
+      title: "UX/UI: Diseñando Experiencias",
+      description: "Analizador de Diseño Web — WCAG (Web Content Accessibility Guidelines).",
       author: "Luna Almanza",
       date: "12 Oct, 2024",
       image: "https://drive.google.com/file/d/1n0HU1kI1cfk-BLVkzHLkm1nCwbmnD7JQ/view?usp=sharing",
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 5,
       title: "Real: JSON es flexible",
-      description: "Las bases relacionales piden estructura. Si metes todo en JSON, pierdes Ã­ndices, validaciones y buen reporting.",
+      description: "Las bases relacionales piden estructura. Si metes todo en JSON, pierdes índices, validaciones y buen reporting.",
       author: "Luna Almanza",
       date: "3 Oct, 2025",
       image: "https://drive.google.com/file/d/1OwDx6oiFMN3EslDO2oQGRr03KTXVAJcW/view?usp=sharing",
@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: 6,
       title: "Lo que dice la ciencia",
-      description: "Cuando escuchas un sonido, se activa un circuito completo: oÃ­do interno + nervio auditivo + cerebro.",
+      description: "Cuando escuchas un sonido, se activa un circuito completo: oído interno + nervio auditivo + cerebro.",
       author: "Luna Almanza",
       date: "5 Nov, 2025",
       image: "https://drive.google.com/file/d/1WqYVqyX1W8cn3RvPNNC8lZGvSbs-Ugtc/view?usp=sharing",
@@ -371,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="flex items-center justify-between">
             <span class="text-sm text-gray-500">Por ${p.author}</span>
             <div class="flex items-center gap-2 text-orange-500">
-              <span class="text-sm">Ver mÃ¡s</span>
+              <span class="text-sm">Ver más</span>
               <i data-lucide="external-link" class="w-4 h-4"></i>
             </div>
           </div>

@@ -1,4 +1,4 @@
-﻿// js/links.js
+// js/links.js
 window.LINKS = {
   // Contacto / Perfiles
   whatsapp: "https://wa.me/573145229832",
@@ -14,7 +14,7 @@ window.LINKS = {
  repoFlowManager:     "https://github.com/lunaalmanza2004-stack/Flow-Manager.git",
 repoDerivaLab:"https://github.com/lunaalmanza2004-stack/DerivaLab-Pro.git",
 
-  // EducaciÃ³n / Certificados
+  // Educación / Certificados
   senaDiploma: "https://drive.google.com/file/d/17OgmdfMrHUeSYkcetbxmfElxJk0vmQ6D/view?usp=drive_link",
   senaActa: "https://drive.google.com/file/d/1BBlSCW62AP4hPt6FL2HEWstvZ2rm5MbD/view?usp=drive_link",
   senaNotas: "https://drive.google.com/file/d/16rUw4Zpe_nGCqMzX-80vg6I3_BzIEkiF/view?usp=drive_link",
