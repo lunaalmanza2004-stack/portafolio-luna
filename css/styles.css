@@ -1,9 +1,9 @@
-/* =========================================================
-   styles.css — Portafolio Luna Almanza (COMPLETO)
+﻿/* =========================================================
+   styles.css â€” Portafolio Luna Almanza (COMPLETO)
    ========================================================= */
 
 /* ===== Base ===== */
-/* Usamos animación propia en JS, así que dejamos el comportamiento por defecto */
+/* Usamos animaciÃ³n propia en JS, asÃ­ que dejamos el comportamiento por defecto */
 html { scroll-behavior: auto; }
 * { box-sizing: border-box; }
 button, a { -webkit-tap-highlight-color: transparent; }
@@ -44,14 +44,14 @@ input,select,textarea,button{ accent-color:#111827; }
 .chip i{width:.75rem;height:.75rem}
 .chip:hover{background:#f97316;color:#fff}
 
-/* ===== Habilidades (SIN interacción) ===== */
+/* ===== Habilidades (SIN interacciÃ³n) ===== */
 .skill{
   padding:1.5rem;text-align:center;background:#fff;
   border:2px solid #e5e7eb;border-radius:.75rem;color:inherit;
   cursor:default; pointer-events:none;
 }
 .skill::before{
-  content:"✓";display:flex;align-items:center;justify-content:center;
+  content:"âœ“";display:flex;align-items:center;justify-content:center;
   width:3rem;height:3rem;margin:0 auto .75rem;border-radius:9999px;
   background:#ffedd5;color:#f97316;font-size:1.25rem;
 }
@@ -135,3 +135,4 @@ input,select,textarea,button{ accent-color:#111827; }
   border:2px solid rgba(255,255,255,.18);min-height:200px;
 }
 .contact-card:hover{ background:#f97316; transform:scale(1.05); }
+

@@ -1,4 +1,4 @@
-// js/links.js
+﻿// js/links.js
 window.LINKS = {
   // Contacto / Perfiles
   whatsapp: "https://wa.me/573145229832",
@@ -14,7 +14,7 @@ window.LINKS = {
  repoFlowManager:     "https://github.com/lunaalmanza2004-stack/Flow-Manager.git",
 repoDerivaLab:"https://github.com/lunaalmanza2004-stack/DerivaLab-Pro.git",
 
-  // Educación / Certificados
+  // EducaciÃ³n / Certificados
   senaDiploma: "https://drive.google.com/file/d/17OgmdfMrHUeSYkcetbxmfElxJk0vmQ6D/view?usp=drive_link",
   senaActa: "https://drive.google.com/file/d/1BBlSCW62AP4hPt6FL2HEWstvZ2rm5MbD/view?usp=drive_link",
   senaNotas: "https://drive.google.com/file/d/16rUw4Zpe_nGCqMzX-80vg6I3_BzIEkiF/view?usp=drive_link",
@@ -34,3 +34,4 @@ repoDerivaLab:"https://github.com/lunaalmanza2004-stack/DerivaLab-Pro.git",
   cursoLogica2: "https://app.aluracursos.com/certificate/7362592b-884c-43b1-b7e7-d9034ca6b7cf?lang",
   cursoEncriptador: "https://app.aluracursos.com/certificate/1785e4f6-3ab0-401e-92c1-612aedfc2f1f?lang"
 };
+
