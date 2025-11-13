@@ -1,7 +1,9 @@
 // =========================================================
-// main.js — Portafolio Luna Almanza (COMPLETO)
-// - Botón "Opiniones" soportado (sección #6)
-// - Scroll más LENTO y preciso (1.2–1.3s con easing)
+// main.js — Portafolio Luna Almanza (COMPLETO, sin Opiniones)
+// - Scroll más LENTO y preciso (1.3s con easing)
+// - Activo en navbar por sección visible
+// - LinkedIn cards + normalización Drive
+// - Thumbs de proyectos (Drive)
 // =========================================================
 'use strict';
 
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ====== Scroll personalizado (más lento/preciso) ======
-  const SCROLL_MS = 1300;                   // velocidad de desplazamiento
+  const SCROLL_MS = 1300; // velocidad de desplazamiento
   const EASE = t => t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; // easeInOutCubic
 
   function smoothScrollTo(targetY, duration = SCROLL_MS) {
@@ -79,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function scrollToSection(id, offsetPx = 0) {
     const el = document.getElementById(id);
     if (!el) return;
-    // Posición absoluta del elemento
     const rect = el.getBoundingClientRect();
     const y = window.pageYOffset + rect.top - offsetPx;
     smoothScrollTo(y);
@@ -95,23 +96,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // Click handlers (evita los deshabilitados)
+  // Click handlers (todos clickeables ahora)
   navButtons.forEach(btn => {
-    if (btn.classList.contains('nav-btn--disabled') || btn.getAttribute('aria-disabled') === 'true') return;
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const id = btn.dataset.section;
-      // offset pequeño por estética; tu header ya tiene padding, así que 0 está bien
       scrollToSection(id, 0);
     });
   });
 
-  // Scroll Spy (incluye Opiniones como #6)
-  const sectionIds = ['inicio','formacion','habilidades','proyectos','publicaciones','opiniones','contacto'];
+  // Scroll Spy (usa 'avisos' en lugar de 'opiniones')
+  const sectionIds = ['inicio','formacion','habilidades','proyectos','publicaciones','avisos','contacto'];
   const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
   const io = new IntersectionObserver((entries) => {
-    // elegimos la sección con mayor ratio visible
     let best = null, bestRatio = 0;
     for (const en of entries) {
       if (en.isIntersecting && en.intersectionRatio > bestRatio) {
@@ -120,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (best) setActive(best.id);
   }, {
-    // Hace el "activo" más estable mientras se centra la sección
     root: null,
     threshold: Array.from({length: 21}, (_,i)=>i/20),
     rootMargin: "-25% 0px -55% 0px"
@@ -128,155 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach(sec => io.observe(sec));
   setActive('inicio');
-
-  // ====== Opiniones (localStorage) + Editar/Eliminar ======
-  const OP_KEY = 'opiniones';
-  const form = document.getElementById('opinion-form');
-  const list = document.getElementById('opiniones-list');
-  const ratingForm = document.getElementById('opinion-rating');
-  let editingId = null;
-
-  function applyStars(container, value) {
-    const stars = container?.querySelectorAll?.('.star') || [];
-    stars.forEach(st => st.classList.toggle('active', Number(st.dataset.value) <= value));
-  }
-
-  // Estrellas del formulario
-  if (ratingForm) {
-    ratingForm.addEventListener('mouseover', (e) => {
-      const btn = e.target.closest('.star'); if (!btn) return;
-      applyStars(ratingForm, Number(btn.dataset.value));
-    });
-    ratingForm.addEventListener('mouseleave', () => {
-      applyStars(ratingForm, Number(ratingForm.dataset.value || 0));
-    });
-    ratingForm.addEventListener('click', (e) => {
-      const btn = e.target.closest('.star'); if (!btn) return;
-      const val = Number(btn.dataset.value);
-      ratingForm.dataset.value = String(val);
-      applyStars(ratingForm, val);
-    });
-  }
-
-  const getOpiniones = () => {
-    try { return JSON.parse(localStorage.getItem(OP_KEY) || '[]'); }
-    catch { return []; }
-  };
-  const saveOpiniones = (arr) => localStorage.setItem(OP_KEY, JSON.stringify(arr));
-
-  function projectTitle(pid) {
-    const el = document.querySelector(`.project-card[data-project-id="${pid}"]`);
-    return el?.dataset.title || pid || 'Proyecto';
-  }
-  function initialsFromName(name) {
-    if (!name) return '🙂';
-    const parts = name.trim().split(/\s+/).slice(0,2);
-    const init = parts.map(p => p?.[0]?.toUpperCase() || '').join('');
-    return init || '🙂';
-  }
-  function makeAvatarEl(name, avatarUrl) {
-    const wrap = document.createElement('div');
-    wrap.className = 'w-10 h-10 rounded-full overflow-hidden bg-orange-100 text-orange-700 flex items-center justify-center font-semibold shrink-0';
-    if (avatarUrl) {
-      const img = document.createElement('img');
-      img.src = avatarUrl; img.alt = name ? `Foto de ${name}` : 'Foto de perfil';
-      img.className = 'w-full h-full object-cover'; img.referrerPolicy = 'no-referrer';
-      img.addEventListener('error', () => { wrap.textContent = initialsFromName(name); });
-      wrap.appendChild(img);
-    } else {
-      wrap.textContent = initialsFromName(name);
-    }
-    return wrap;
-  }
-  function setSubmitLabel(editing) {
-    const btn = form?.querySelector('button[type="submit"]');
-    if (btn) btn.textContent = editing ? 'Guardar cambios' : 'Guardar';
-  }
-  function beginEdit(op) {
-    if (!form) return;
-    const sel = document.getElementById('opinion-project'); if (sel) sel.value = op.project;
-    const nameEl = document.getElementById('opinion-name'); if (nameEl) nameEl.value = op.name || '';
-    const avatarEl = document.getElementById('opinion-avatar'); if (avatarEl) avatarEl.value = op.avatar || '';
-    const textEl = document.getElementById('opinion-text'); if (textEl) textEl.value = op.text || '';
-    if (ratingForm) { ratingForm.dataset.value = String(op.rating || 0); applyStars(ratingForm, Number(op.rating || 0)); }
-    editingId = op.ts; setSubmitLabel(true);
-    scrollToSection('opiniones', 0);  // te lleva al form suavemente
-    textEl?.focus();
-  }
-  function deleteOpinion(ts) {
-    const arr = getOpiniones().filter(o => o.ts !== ts);
-    saveOpiniones(arr);
-    if (editingId === ts) {
-      editingId = null; setSubmitLabel(false); form?.reset();
-      if (ratingForm) { ratingForm.dataset.value = '0'; applyStars(ratingForm, 0); }
-    }
-    renderOpiniones();
-  }
-  function renderOpiniones() {
-    if (!list) return;
-    const data = getOpiniones().slice().reverse();
-    list.innerHTML = '';
-    if (data.length === 0) {
-      const empty = document.createElement('div');
-      empty.className = 'p-4 border rounded-lg bg-white hover-card';
-      empty.textContent = 'Aún no hay opiniones. ¡Sé la primera en opinar! 🙂';
-      list.appendChild(empty); return;
-    }
-    for (const op of data) {
-      const card = document.createElement('div');
-      card.className = 'p-4 border rounded-lg bg-white hover-card';
-
-      const top = document.createElement('div'); top.className = 'flex items-start gap-3';
-      const avatar = makeAvatarEl(op.name, op.avatar);
-      const body = document.createElement('div'); body.className = 'flex-1';
-
-      const head = document.createElement('div'); head.className = 'flex items-center justify-between mb-1';
-      const titleEl = document.createElement('div'); titleEl.className = 'font-semibold'; titleEl.textContent = projectTitle(op.project);
-      const starsEl = document.createElement('div'); starsEl.className = 'text-orange-500';
-      const rating = Number(op.rating || 0); starsEl.textContent = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-
-      head.appendChild(titleEl); head.appendChild(starsEl);
-
-      const meta = document.createElement('div'); meta.className = 'text-xs text-gray-500 mb-2';
-      const name = (op.name && op.name.trim()) ? op.name.trim() : 'Anónimo';
-      meta.textContent = `${new Date(op.ts).toLocaleDateString()} — ${name}`;
-
-      const text = document.createElement('p'); text.className = 'text-gray-800 whitespace-pre-line'; text.textContent = op.text || '';
-
-      const actions = document.createElement('div'); actions.className = 'mt-3 flex gap-4 text-xs';
-      const btnEdit = document.createElement('button'); btnEdit.type = 'button'; btnEdit.className = 'text-orange-600 hover:underline'; btnEdit.textContent = 'Editar';
-      btnEdit.addEventListener('click', () => beginEdit(op));
-      const btnDel = document.createElement('button'); btnDel.type = 'button'; btnDel.className = 'text-gray-500 hover:text-red-600'; btnDel.textContent = 'Eliminar';
-      btnDel.addEventListener('click', () => deleteOpinion(op.ts));
-
-      actions.appendChild(btnEdit); actions.appendChild(btnDel);
-      body.appendChild(head); body.appendChild(meta); body.appendChild(text); body.appendChild(actions);
-      top.appendChild(avatar); top.appendChild(body); card.appendChild(top); list.appendChild(card);
-    }
-  }
-  renderOpiniones();
-
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const project = document.getElementById('opinion-project')?.value;
-    const name = document.getElementById('opinion-name')?.value || '';
-    const avatar = document.getElementById('opinion-avatar')?.value?.trim() || '';
-    const text = document.getElementById('opinion-text')?.value?.trim();
-    const rating = Number(ratingForm?.dataset.value || 0);
-    if (!text) return;
-
-    const arr = getOpiniones();
-    if (editingId) {
-      const idx = arr.findIndex(o => o.ts === editingId);
-      if (idx !== -1) arr[idx] = { ...arr[idx], project, name, avatar, text, rating };
-      editingId = null; setSubmitLabel(false);
-    } else {
-      arr.push({ project, name, avatar, text, rating, ts: Date.now() });
-    }
-    saveOpiniones(arr); form.reset();
-    if (ratingForm) { ratingForm.dataset.value = '0'; applyStars(ratingForm, 0); }
-    renderOpiniones();
-  });
 
   // ====== Publicaciones (LinkedIn) ======
   const publications = [
@@ -439,19 +287,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Repara cualquier <img> Drive ya presente
   fixDriveImages(document);
-
-  // ====== Utilidades admin por consola ======
-  window.Opiniones = {
-    get: () => getOpiniones(),
-    clear: () => { localStorage.removeItem(OP_KEY); renderOpiniones(); },
-    count: () => getOpiniones().length,
-    clearRatings: () => {
-      Object.keys(localStorage).forEach(k => { if (k.startsWith('rating:')) localStorage.removeItem(k); });
-    },
-    clearAll: () => {
-      window.Opiniones.clear();
-      window.Opiniones.clearRatings();
-    }
-  };
 });
-

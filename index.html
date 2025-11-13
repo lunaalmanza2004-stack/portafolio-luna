@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -37,21 +37,19 @@
     <div class="bg-black rounded-full px-2 py-2 flex items-center gap-1">
       <button data-section="inicio" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Inicio</button>
       <button data-section="formacion" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Formación</button>
-      <!-- Habilidades: NO clic -->
-      <button data-section="habilidades" class="nav-btn nav-btn--disabled min-w-[120px] px-6 py-2 rounded-full text-white" aria-disabled="true">Habilidades</button>
+      <!-- Habilidades: AHORA SÍ clic -->
+      <button data-section="habilidades" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Habilidades</button>
       <button data-section="proyectos" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Proyectos</button>
       <button data-section="publicaciones" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Publicaciones</button>
-      <button data-section="opiniones" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Opiniones</button>
-
+      <!-- Avisos (nuevo) -->
+      <button data-section="avisos" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Avisos</button>
       <button data-section="contacto" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Hablemos</button>
-      
     </div>
   </nav>
 
   <!-- HERO (sin “Hello!”, foto ajustada y botones unidos) -->
   <section id="inicio" class="relative min-h-[92vh] flex flex-col items-center justify-center pt-24 px-8 overflow-hidden bg-white">
     <div class="relative w-full max-w-5xl flex flex-col items-center">
-
       <!-- Títulos -->
       <div class="relative z-30 text-center -mt-2">
         <h1 class="text-5xl md:text-6xl lg:text-8xl mb-1 tracking-tightish font-normal">
@@ -64,12 +62,10 @@
 
       <!-- Semicírculo + Foto -->
       <div class="relative w-full flex justify-center items-end -mt-[27rem] md:-mt-[31rem] lg:-mt-[35rem]">
-        <!-- Medio círculo angosto -->
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2
-                    w-[430px] h-[225px] md:w-[540px] md:h-[270px] lg:w-[670px] lg:h-[320px]
+                    w=[430px] h=[225px] md:w-[540px] md:h-[270px] lg:w-[670px] lg:h-[320px]
                     bg-orange-400 rounded-t-full overflow-hidden z-10"></div>
 
-        <!-- Foto (sin iluminación) -->
         <div class="relative z-20
                     w-[500px] md:w-[620px] lg:w-[760px]
                     h-[740px] md:h-[900px] lg:h-[1040px]
@@ -216,7 +212,7 @@
     </div>
   </section>
 
-  <!-- Habilidades (NO clic) -->
+  <!-- Habilidades (Clickeable) -->
   <section id="habilidades" class="py-16 px-8 bg-gray-50">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-4xl lg:text-5xl text-center mb-12">
@@ -244,7 +240,7 @@
     </div>
   </section>
 
-  <!-- Proyectos (6, incluye DerivaLab Pro) -->
+  <!-- Proyectos -->
   <section id="proyectos" class="py-16 px-8 bg-white">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-4xl lg:text-5xl text-center mb-12">
@@ -369,7 +365,6 @@
             <i data-lucide="github" class="w-4 h-4"></i> Abrir repositorio
           </a>
         </article>
-
       </div>
     </div>
   </section>
@@ -410,59 +405,68 @@
     </div>
   </section>
 
-  <!-- Opiniones -->
-  <section id="opiniones" class="py-16 px-8 bg-gray-50">
+  <!-- AVISOS (nuevo, reemplaza Opiniones) -->
+  <section id="avisos" class="py-16 px-8 bg-gray-50">
     <div class="max-w-5xl mx-auto">
       <h2 class="text-4xl lg:text-5xl text-center mb-8">
-        <span class="text-orange-500">Opiniones</span> sobre mis proyectos
+        <span class="text-orange-500">Avisos</span>
       </h2>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- Form -->
-        <form id="opinion-form" class="p-6 bg-white border-2 rounded-xl hover-card">
-          <h3 class="text-xl font-semibold mb-4">Deja tu opinión</h3>
+        <!-- Aviso principal -->
+        <div class="p-8 rounded-2xl border-2 bg-gradient-to-br from-orange-500 to-orange-600 text-white hover-card shadow-lg">
+          <div class="flex flex-col gap-4">
+            <div class="text-sm uppercase tracking-wider opacity-90">Importante</div>
+            <h3 class="text-3xl font-extrabold leading-tight">
+              Abiertas: <u>empleo</u> y <u>freelance</u>. <br/>
+              ¿Necesitas una <u>app</u> o un <u>automatizador</u>? Hablemos.
+            </h3>
+            <p class="text-orange-50">
+              Envíame tu idea o problema y te propongo la mejor ruta (clarita, sin humo): alcance, entregables y próximos pasos.
+            </p>
 
-          <label class="block mb-2 font-medium" for="opinion-project">Proyecto</label>
-          <select id="opinion-project" class="input mb-4">
-            <option value="website-design-analyzer">Website Design Analyzer</option>
-            <option value="relativity-releases-faq-chatbot">Relativity Releases FAQ Chatbot</option>
-            <option value="vehikpi">VehikPI</option>
-            <option value="radar-fraude">Radar de Fraude en Tiempo Real</option>
-            <option value="flowmanager">FlowManager — Automatizador de Procesos Internos</option>
-            <option value="derivalab-pro">DerivaLab Pro — Calculadora científica</option>
-          </select>
-
-          <label class="block mb-2 font-medium">Calificación</label>
-          <div id="opinion-rating" class="rating-stars mb-4" data-value="0" aria-label="Calificar">
-            <button type="button" class="star" data-value="1">★</button>
-            <button type="button" class="star" data-value="2">★</button>
-            <button type="button" class="star" data-value="3">★</button>
-            <button type="button" class="star" data-value="4">★</button>
-            <button type="button" class="star" data-value="5">★</button>
+            <div class="mt-2 flex flex-wrap gap-3">
+              <a href="#contacto" class="inline-flex items-center gap-2 bg-white text-orange-600 hover:text-orange-700 px-6 py-3 rounded-full font-semibold transition-colors">
+                Hablemos <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+              </a>
+              <a href="#proyectos" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full font-semibold transition-colors">
+                Ver proyectos <i data-lucide="folder-git-2" class="w-5 h-5"></i>
+              </a>
+              <a href="#publicaciones" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full font-semibold transition-colors">
+                Ver publicaciones <i data-lucide="linkedin" class="w-5 h-5"></i>
+              </a>
+            </div>
           </div>
+        </div>
 
-          <label class="block mb-2 font-medium" for="opinion-name">Tu nombre (opcional)</label>
-          <input id="opinion-name" class="input mb-4" placeholder="Escribe tu nombre" />
-
-          <label class="block mb-2 font-medium" for="opinion-text">Comentario</label>
-          <textarea id="opinion-text" class="input mb-4 min-h-[120px]" placeholder="¿Qué te gustó o mejorarías?" required></textarea>
-
-          <div class="flex items-center gap-3">
-            <button class="btn-orange" type="submit">Guardar</button>
-            <button id="opinion-cancel" type="button" class="px-4 py-2 rounded-full border-2 border-gray-300 text-gray-700 hidden">Cancelar edición</button>
+        <!-- Módulos breves -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-6 border-2 rounded-xl bg-white">
+            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center mb-3 text-white"><i data-lucide="megaphone" class="w-5 h-5"></i></div>
+            <h4 class="font-semibold mb-1">Disponibilidad</h4>
+            <p class="text-gray-600 text-sm">Proyectos nuevos y colaboraciones. Respondo rápido.</p>
           </div>
-        </form>
-
-        <!-- Listado -->
-        <div class="p-6 bg-white border-2 rounded-xl">
-          <h3 class="text-xl font-semibold mb-4">Últimas opiniones</h3>
-          <div id="opiniones-list" class="opiniones-scroll"></div>
+          <div class="p-6 border-2 rounded-xl bg-white">
+            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center mb-3 text-white"><i data-lucide="bot" class="w-5 h-5"></i></div>
+            <h4 class="font-semibold mb-1">Automatización</h4>
+            <p class="text-gray-600 text-sm">Bots/QA, scraping, reportes y flujos internos.</p>
+          </div>
+          <div class="p-6 border-2 rounded-xl bg-white">
+            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center mb-3 text-white"><i data-lucide="bar-chart-3" class="w-5 h-5"></i></div>
+            <h4 class="font-semibold mb-1">Datos</h4>
+            <p class="text-gray-600 text-sm">KPIs, dashboards y analítica en Python.</p>
+          </div>
+          <div class="p-6 border-2 rounded-xl bg-white">
+            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center mb-3 text-white"><i data-lucide="thumbs-up" class="w-5 h-5"></i></div>
+            <h4 class="font-semibold mb-1">Gracias 🙌</h4>
+            <p class="text-gray-600 text-sm">Por ver mis publicaciones y proyectos. ¡Escríbeme!</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contacto (sin CV) -->
+  <!-- Contacto -->
   <section id="contacto" class="py-16 px-8 bg-gradient-to-br from-gray-900 to-black text-white">
     <div class="max-w-4xl mx-auto">
       <h2 class="text-4xl lg:text-5xl text-center mb-6">
@@ -505,4 +509,3 @@
   <script src="js/main.js"></script>
 </body>
 </html>
-
