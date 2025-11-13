@@ -1,0 +1,137 @@
+/* =========================================================
+   styles.css — Portafolio Luna Almanza (COMPLETO)
+   ========================================================= */
+
+/* ===== Base ===== */
+/* Usamos animación propia en JS, así que dejamos el comportamiento por defecto */
+html { scroll-behavior: auto; }
+* { box-sizing: border-box; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+/* ===== Accesibilidad ===== */
+a:focus,button:focus,select:focus,input:focus,textarea:focus{
+  outline:3px solid rgba(17,24,39,.25);
+  outline-offset:2px;
+}
+input,select,textarea,button{ accent-color:#111827; }
+::selection{ background:rgba(17,24,39,.14); color:inherit; }
+
+/* ===== NAV ===== */
+.nav-btn{
+  color:#fff;
+  transition:background-color .2s ease, color .2s ease, transform .12s ease;
+  border-radius:9999px;
+  margin:0 22px;
+  min-width:120px;                 /* todos con el mismo ancho visual */
+  padding:.5rem 1.5rem;
+}
+.nav-btn:hover{ background:#111827; }
+.nav-btn.active{ background:#f97316; color:#fff; }
+.nav-btn:active{ transform:translateY(1px); }
+/* Habilidades: no clic pero mismo look */
+.nav-btn--disabled{ pointer-events:none; }
+
+/* ===== Reutilizables ===== */
+.hover-card:hover { box-shadow: 0 12px 30px rgba(0,0,0,.12); }
+.pill { border: 2px solid #1f2937; border-radius:9999px; }
+
+.chip{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.5rem 1rem;border-radius:9999px;
+  background:#f3f4f6;color:#111827;font-size:.875rem;
+  transition:background .2s,color .2s;
+}
+.chip i{width:.75rem;height:.75rem}
+.chip:hover{background:#f97316;color:#fff}
+
+/* ===== Habilidades (SIN interacción) ===== */
+.skill{
+  padding:1.5rem;text-align:center;background:#fff;
+  border:2px solid #e5e7eb;border-radius:.75rem;color:inherit;
+  cursor:default; pointer-events:none;
+}
+.skill::before{
+  content:"✓";display:flex;align-items:center;justify-content:center;
+  width:3rem;height:3rem;margin:0 auto .75rem;border-radius:9999px;
+  background:#ffedd5;color:#f97316;font-size:1.25rem;
+}
+.skill:hover{ border-color:#e5e7eb; box-shadow:none; }
+
+/* ===== Botones y campos ===== */
+.btn-orange{
+  display:inline-block;padding:.5rem 1.5rem;border-radius:9999px;
+  background:#f97316;color:#fff;font-weight:600;
+  transition:transform .15s,background .2s;
+}
+.btn-orange:hover{background:#ea580c;transform:translateY(-1px)}
+.input{
+  width:100%;padding:.75rem 1rem;border-radius:.75rem;
+  border:2px solid #e5e7eb;background:#fff;transition:border-color .2s,box-shadow .2s;
+}
+.input:focus{outline:none;border-color:#9ca3af;box-shadow:0 0 0 4px rgba(156,163,175,.25)}
+
+/* ===== Estrellas (opiniones) ===== */
+.rating-stars{display:inline-flex;gap:2px}
+.rating-stars .star{
+  font-size:1.25rem;line-height:1;color:#d1d5db;cursor:pointer;
+  background:transparent;border:0;padding:0;transition:color .15s,transform .1s;
+}
+.rating-stars .star.active,
+.rating-stars .star:hover,
+.rating-stars .star:hover ~ .star{color:#f97316}
+.rating-stars .star:active{transform:scale(.9)}
+
+/* ===== Opiniones: scroll ===== */
+.opiniones-scroll{
+  display:grid;grid-auto-rows:max-content;gap:12px;max-height:420px;
+  overflow-y:auto;padding-right:.5rem;
+}
+.opiniones-scroll>*{min-width:100%}
+.opiniones-scroll::-webkit-scrollbar{width:8px}
+.opiniones-scroll::-webkit-scrollbar-track{background:#f3f4f6;border-radius:9999px}
+.opiniones-scroll::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:9999px}
+.opiniones-scroll:hover::-webkit-scrollbar-thumb{background:#9ca3af}
+
+/* ===== Clamp util ===== */
+.clamp-2{
+  line-clamp:2;display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden;
+}
+
+/* ===== Proyectos ===== */
+.project-thumb{
+  position:relative;height:14rem;overflow:hidden;border-radius:.75rem;
+  margin-bottom:1rem;background:#000;
+}
+.project-thumb img{
+  width:100%;height:100%;object-fit:cover;transition:transform .3s,opacity .3s;
+}
+.project-card:hover .project-thumb img{ transform:scale(1.06);opacity:.9; }
+.project-thumb .badge{
+  position:absolute;top:.75rem;left:.75rem;background:rgba(255,255,255,.9);
+  color:#111827;font-size:.75rem;padding:.25rem .5rem;border-radius:9999px;
+}
+
+/* ===== Publicaciones ===== */
+#publications-grid{ gap:2rem !important; }
+#publications-grid>div{
+  display:flex;flex-direction:column;min-height:405px;border-radius:.75rem;
+}
+#publications-grid>div>.relative{
+  height:14rem;overflow:hidden;border-top-left-radius:.75rem;border-top-right-radius:.75rem;
+  background:linear-gradient(45deg,#ff7a18,#ff5400);
+}
+#publications-grid>div>.relative img{
+  width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;
+}
+#publications-grid>div>.p-6{display:flex;flex-direction:column;flex:1 1 auto}
+#publications-grid>div>.p-6>div:last-child{margin-top:auto}
+
+/* ===== Contacto ===== */
+.contact-card{
+  display:flex;flex-direction:column;align-items:center;
+  padding:2rem;background:rgba(255,255,255,.06);border-radius:1rem;
+  transition:transform .15s,background .2s;
+  border:2px solid rgba(255,255,255,.18);min-height:200px;
+}
+.contact-card:hover{ background:#f97316; transform:scale(1.05); }

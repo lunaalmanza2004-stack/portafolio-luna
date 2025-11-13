@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#E6530A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo naranja con bordes grandes -->
+  <rect x="0" y="0" width="512" height="512" rx="112" fill="url(#g)"/>
+
+  <!-- Antena (más grande para mejor legibilidad) -->
+  <circle cx="256" cy="92" r="22" fill="#ffffff"/>
+  <rect x="240" y="116" width="32" height="64" rx="16" fill="#ffffff"/>
+
+  <!-- Orejas laterales suaves (detrás del marco blanco) -->
+  <rect x="64" y="224" width="72" height="164" rx="36" fill="#FFEFE6"/>
+  <rect x="376" y="224" width="72" height="164" rx="36" fill="#FFEFE6"/>
+
+  <!-- Marco blanco del rostro (más ancho y alto para verse "más grande") -->
+  <rect x="76" y="168" width="360" height="248" rx="72" fill="#ffffff"/>
+
+  <!-- Pantalla negra del rostro -->
+  <rect x="136" y="224" width="240" height="136" rx="44" fill="#0A0A0A"/>
+
+  <!-- Ojos -->
+  <circle cx="206" cy="292" r="36" fill="#ffffff"/>
+  <circle cx="306" cy="292" r="36" fill="#ffffff"/>
+</svg>
