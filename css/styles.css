@@ -144,3 +144,52 @@ input,select,textarea,button{ accent-color:#111827; }
   border:2px solid rgba(255,255,255,.18);min-height:200px;
 }
 .contact-card:hover{ background:#f97316; transform:scale(1.05); }
+/* ============================
+   Responsive patch NO invasivo
+   (añádelo al FINAL de css/styles.css)
+   ============================ */
+
+/* Mejor tacto en móviles (no cambia diseño) */
+html { -webkit-text-size-adjust: 100%; }
+a, button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+
+/* --- Navbar: scroll horizontal suave en pantallas pequeñas --- */
+@media (max-width: 640px) {
+  nav { top: 10px; }
+  nav > div {
+    max-width: 92vw;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;          /* Firefox */
+  }
+  nav > div::-webkit-scrollbar { display: none; }  /* WebKit */
+  .nav-btn { flex: 0 0 auto; }
+}
+
+/* --- HERO: mantener composición y evitar desbordes en móvil --- */
+@media (max-width: 640px) {
+  /* Espacio superior un pelín mayor para que no tape la nav */
+  #inicio { padding-top: 7rem; }
+
+  /* Títulos legibles sin cambiar su posición original */
+  #inicio h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; }
+  #inicio h2 { font-size: clamp(1.5rem, 5.5vw, 2.5rem); line-height: 1.1; }
+
+  /* Limitar la imagen para que no se salga en teléfonos conservando el look */
+  #inicio img {
+    max-width: 95vw;
+    height: auto !important;      /* evita desbordes verticales en móviles */
+  }
+
+  /* Semicírculo: reduce un poco su ancho en móviles para que no recorte */
+  #inicio .rounded-t-full { max-width: 90vw; }
+
+  /* Botonera del hero: quepa siempre y sea cómoda de pulsar */
+  #inicio .backdrop-blur a { padding: 0.9rem 1rem; }
+}
+
+/* --- Grids ya son responsive con Tailwind; no se tocan.
+   Solo afinamos pequeños detalles de legibilidad en desktop --- */
+@media (min-width: 1024px){
+  body { text-rendering: optimizeLegibility; }
+}

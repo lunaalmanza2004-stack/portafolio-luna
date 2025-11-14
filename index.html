@@ -34,20 +34,21 @@
 
   <!-- NAV -->
   <nav class="fixed top-8 left-1/2 -translate-x-1/2 z-50">
-    <div class="bg-black rounded-full px-2 py-2 flex items-center gap-1 max-w-[94vw] overflow-x-auto no-scrollbar">
-      <button data-section="inicio"        class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Inicio</button>
-      <button data-section="formacion"     class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Formación</button>
-      <button data-section="habilidades"   class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Habilidades</button>
-      <button data-section="proyectos"     class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Proyectos</button>
-      <button data-section="publicaciones" class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Publicaciones</button>
-      <button data-section="avisos"        class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Avisos</button>
-      <button data-section="contacto"      class="nav-btn min-w-[88px] md:min-w-[120px] px-6 py-2 rounded-full text-white">Hablemos</button>
+    <div class="bg-black rounded-full px-2 py-2 flex items-center gap-1">
+      <button data-section="inicio" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Inicio</button>
+      <button data-section="formacion" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Formación</button>
+      <button data-section="habilidades" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Habilidades</button>
+      <button data-section="proyectos" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Proyectos</button>
+      <button data-section="publicaciones" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Publicaciones</button>
+      <button data-section="avisos" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Avisos</button>
+      <button data-section="contacto" class="nav-btn min-w-[120px] px-6 py-2 rounded-full text-white">Hablemos</button>
     </div>
   </nav>
 
-  <!-- HERO (sin “Hello!”, foto ajustada y botones unidos) -->
+  <!-- HERO -->
   <section id="inicio" class="relative min-h-[92vh] flex flex-col items-center justify-center pt-24 px-8 overflow-hidden bg-white">
     <div class="relative w-full max-w-5xl flex flex-col items-center">
+
       <!-- Títulos -->
       <div class="relative z-30 text-center -mt-2">
         <h1 class="text-5xl md:text-6xl lg:text-8xl mb-1 tracking-tightish font-normal">
@@ -60,26 +61,25 @@
 
       <!-- Semicírculo + Foto -->
       <div class="relative w-full flex justify-center items-end -mt-[27rem] md:-mt-[31rem] lg:-mt-[35rem]">
-        <!-- Semicírculo responsive (corregido w-/h-) -->
+        <!-- Medio círculo angosto -->
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2
-                    w-[85vw] max-w-[430px] h-[38vw] max-h-[225px]
-                    md:w-[540px] md:h-[270px] lg:w-[670px] lg:h-[320px]
+                    w-[430px] h-[225px] md:w-[540px] md:h-[270px] lg:w-[670px] lg:h-[320px]
                     bg-orange-400 rounded-t-full overflow-hidden z-10"></div>
 
-        <!-- Foto responsive -->
+        <!-- Foto -->
         <div class="relative z-20
-                    w-[92vw] max-w-[500px] md:w-[620px] lg:w-[760px]
-                    h-auto
+                    w-[500px] md:w-[620px] lg:w-[760px]
+                    h-[740px] md:h-[900px] lg:h-[1040px]
                     flex items-end justify-center translate-y-[2px] md:translate-y-[4px] lg:translate-y-[6px]">
           <img
             src="https://drive.google.com/uc?export=view&id=1MbRAZ7uEzTfxZoJK58ThxBr24tI0S_TI"
             alt="Luna - Developer & Data Scientist"
-            class="w-full h-auto object-contain object-bottom select-none"
+            class="w-full h-full object-contain object-bottom select-none"
             style="mix-blend-mode:multiply; filter:none!important; box-shadow:none!important;"
           />
         </div>
 
-        <!-- Botones unidos / translúcidos (simétricos) -->
+        <!-- Botones unidos -->
         <div class="absolute z-30 left-1/2 -translate-x-1/2
                     bottom-[1.25rem] md:bottom-[1.75rem] lg:bottom-[2.25rem]
                     flex rounded-full overflow-hidden shadow-xl backdrop-blur
@@ -89,7 +89,7 @@
           </a>
           <span class="w-px bg-black/10 my-2"></span>
           <a href="#contacto" class="px-8 py-4 text-gray-900 font-semibold hover:bg-white/90 inline-flex items-center gap-2">
-            Contáctame <i data-lucide="send" class="w-5 h-5"></i>
+            Hablemos <i data-lucide="send" class="w-5 h-5"></i>
           </a>
         </div>
       </div>
@@ -213,7 +213,7 @@
     </div>
   </section>
 
-  <!-- Habilidades (Clickeable) -->
+  <!-- Habilidades -->
   <section id="habilidades" class="py-16 px-8 bg-gray-50">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-4xl lg:text-5xl text-center mb-12">
@@ -259,7 +259,7 @@
           <div class="flex-grow">
             <h3 class="text-xl pr-2 mb-3">El Website Design Analyzer</h3>
             <p class="text-gray-600 text-sm">
-              Es una app web que, a partir de una URL, escanea automáticamente UX, accesibilidad (incl. WCAG), performance y SEO, asigna un puntaje 0–100 por categoría y global, y genera un reporte PDF con evidencias, riesgos, quick wins y prioridades. Sirve para comparar sitios de forma consistente (benchmarking) y priorizar mejoras con impacto. Está pensado para product managers, diseñadores, QA y equipos de growth/SEO que necesitan diagnósticos rápidos y accionables. Su diferencial: evaluación estandarizada, resultados claros y recomendaciones listas para ejecutar.
+              Es una app web que, a partir de una URL, escanea automáticamente UX, accesibilidad (incl. WCAG), performance y SEO…
             </p>
           </div>
           <a data-link="repoWebsiteAnalyzer" target="_blank" rel="noopener"
@@ -278,7 +278,7 @@
           <div class="flex-grow">
             <h3 class="text-xl pr-2 mb-3">Relativity Releases FAQ Chatbot</h3>
             <p class="text-gray-600 text-sm">
-              Chat web en Flask que responde preguntas usando solo las release notes oficiales (RelativityOne, Server 2024 y Server 2023), con citas y búsqueda TF-IDF. Incluye modos Quick/Guided/Power, historial por versión, exportación PDF/JSON, compartir (Gmail/WhatsApp/Telegram), voz (mic y lectura, en HTTPS/localhost), y si no encuentra respuesta captura contacto (nombre/email/organización) y lo registra en Google Sheets (fallback CSV). Trae login/registro, personalización (tema/foto), páginas separadas por versión, guardado de conversación y caché de scraping.
+              Chat web en Flask que responde preguntas usando solo las release notes oficiales…
             </p>
           </div>
           <a data-link="repoRelativityChatbot" target="_blank" rel="noopener"
@@ -297,7 +297,7 @@
           <div class="flex-grow">
             <h3 class="text-xl pr-2 mb-3">VehikPI</h3>
             <p class="text-gray-600 text-sm">
-              Dashboard web en Python/Flask que toma un Excel incluido, lo procesa con pandas para KPIs (unidades, ingresos, ticket promedio, top marcas) y lo muestra con Plotly. Filtros por período, tipo y marca; comparación Autos–Motos y descarga del Excel. UI 100% en español.
+              Dashboard web en Python/Flask que toma un Excel incluido, lo procesa con pandas para KPIs…
             </p>
           </div>
           <a data-link="repoVehikPI" target="_blank" rel="noopener"
@@ -320,7 +320,7 @@
           <div class="flex-grow">
             <h3 class="text-xl pr-2 mb-3">Radar de Fraude en Tiempo Real</h3>
             <p class="text-gray-600 text-sm">
-              App en Python (FastAPI + WebSocket) que simula detección de fraude en e-commerce: genera transacciones en tiempo real, evalúa con Isolation Forest y reglas heurísticas, y muestra dashboard con métricas, alertas y explicaciones (RiskBot).
+              App en Python (FastAPI + WebSocket) que simula detección de fraude…
             </p>
           </div>
           <a data-link="repoRadarFraude" target="_blank" rel="noopener"
@@ -339,7 +339,7 @@
           <div class="flex-grow">
             <h3 class="text-xl pr-2 mb-3">FlowManager — Automatizador de Procesos Internos</h3>
             <p class="text-gray-600 text-sm">
-              Permite crear, visualizar y automatizar flujos internos (solicitudes, aprobaciones, entregas). Ejemplo: al solicitar material, se notifica al encargado y se actualiza el estado automáticamente.
+              Permite crear, visualizar y automatizar flujos internos…
             </p>
           </div>
           <a data-link="repoFlowManager" target="_blank" rel="noopener"
@@ -348,7 +348,7 @@
           </a>
         </article>
 
-        <!-- 6 (nuevo) DerivaLab Pro -->
+        <!-- 6 -->
         <article class="project-card p-6 border-2 rounded-xl hover:border-orange-500 transition-all hover-card bg-white flex flex-col"
                  data-project-id="derivalab-pro" data-title="DerivaLab Pro">
           <div class="project-thumb">
@@ -358,7 +358,7 @@
           <div class="flex-grow">
             <h3 class="text-xl pr-2 mb-3">DerivaLab Pro — Calculadora científica modular</h3>
             <p class="text-gray-600 text-sm">
-              Cálculo simbólico (derivadas, integrales), matrices, gráficas 2D/3D, y sistema de plugins programables. Ofrece CLI, GUI y API para integrarla en pipelines de análisis.
+              Cálculo simbólico, matrices, gráficas 2D/3D, y sistema de plugins…
             </p>
           </div>
           <a data-link="repoDerivaLab" target="_blank" rel="noopener"
@@ -366,6 +366,7 @@
             <i data-lucide="github" class="w-4 h-4"></i> Abrir repositorio
           </a>
         </article>
+
       </div>
     </div>
   </section>
@@ -406,61 +407,44 @@
     </div>
   </section>
 
-  <!-- AVISOS (nuevo, reemplaza Opiniones) -->
-  <section id="avisos" class="py-16 px-8 bg-gray-50">
+  <!-- AVISOS (ajustado según tu pedido) -->
+  <section id="avisos" class="py-16 px-6 bg-gray-50">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-4xl lg:text-5xl text-center mb-8">
-        <span class="text-orange-500">Avisos</span>
-      </h2>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- Aviso principal -->
-        <div class="p-8 rounded-2xl border-2 bg-gradient-to-br from-orange-500 to-orange-600 text-white hover-card shadow-lg">
-          <div class="flex flex-col gap-4">
-            <div class="text-sm uppercase tracking-wider opacity-90">Importante</div>
-            <h3 class="text-3xl font-extrabold leading-tight">
-              Abiertas: <u>empleo</u> y <u>freelance</u>. <br/>
-              ¿Necesitas una <u>app</u> o un <u>automatizador</u>? Hablemos.
-            </h3>
-            <p class="text-orange-50">
-              Envíame tu idea o problema y te propongo la mejor ruta (clarita, sin humo): alcance, entregables y próximos pasos.
-            </p>
-
-            <div class="mt-2 flex flex-wrap gap-3">
-              <a href="#contacto" class="inline-flex items-center gap-2 bg-white text-orange-600 hover:text-orange-700 px-6 py-3 rounded-full font-semibold transition-colors">
-                Hablemos <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-              </a>
-              <a href="#proyectos" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full font-semibold transition-colors">
-                Ver proyectos <i data-lucide="folder-git-2" class="w-5 h-5"></i>
-              </a>
-              <a href="#publicaciones" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full font-semibold transition-colors">
-                Ver publicaciones <i data-lucide="linkedin" class="w-5 h-5"></i>
-              </a>
-            </div>
-          </div>
+      <div class="relative overflow-hidden rounded-2xl border-2 border-orange-500 bg-white p-6 md:p-10 hover-card">
+        <!-- Robotcito ABAJO -->
+        <div class="pointer-events-none select-none absolute -bottom-4 -right-4 md:bottom-6 md:right-6 opacity-10 md:opacity-20">
+          <i data-lucide="bot" class="w-40 h-40"></i>
         </div>
 
-        <!-- Módulos breves -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="p-6 border-2 rounded-xl bg-white">
-            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center mb-3 text-white"><i data-lucide="megaphone" class="w-5 h-5"></i></div>
-            <h4 class="font-semibold mb-1">Disponibilidad</h4>
-            <p class="text-gray-600 text-sm">Proyectos nuevos y colaboraciones. Respondo rápido.</p>
-          </div>
-          <div class="p-6 border-2 rounded-xl bg-white">
-            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center mb-3 text-white"><i data-lucide="bot" class="w-5 h-5"></i></div>
-            <h4 class="font-semibold mb-1">Automatización</h4>
-            <p class="text-gray-600 text-sm">Bots/QA, scraping, reportes y flujos internos.</p>
-          </div>
-          <div class="p-6 border-2 rounded-xl bg-white">
-            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center mb-3 text-white"><i data-lucide="bar-chart-3" class="w-5 h-5"></i></div>
-            <h4 class="font-semibold mb-1">Datos</h4>
-            <p class="text-gray-600 text-sm">KPIs, dashboards y analítica en Python.</p>
-          </div>
-          <div class="p-6 border-2 rounded-xl bg-white">
-            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center mb-3 text-white"><i data-lucide="thumbs-up" class="w-5 h-5"></i></div>
-            <h4 class="font-semibold mb-1">Gracias 🙌</h4>
-            <p class="text-gray-600 text-sm">Por ver mis publicaciones y proyectos. ¡Escríbeme!</p>
+        <div class="flex flex-col gap-5 md:gap-6">
+          <!-- (Sin “Aviso / Actualizado”) -->
+          <h3 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+            Disponible para <span class="text-orange-600">proyectos freelance</span>
+          </h3>
+
+          <p class="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl">
+            ¿Necesitas una <strong>app</strong> o un <strong>automatizador</strong>? Te invito a ver mis proyectos,
+            a <strong>verificarlos</strong> y a <strong>contactarme</strong>.
+          </p>
+
+          <ul class="grid grid-cols-1 md:grid-cols-3 gap-3 text-gray-700 text-base">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-orange-600"></i><span class="sr-only">Freelance y empleo</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="rocket" class="w-5 h-5 text-orange-600"></i><span class="sr-only">Apps y automatizadores</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="shield-check" class="w-5 h-5 text-orange-600"></i><span class="sr-only">Entregas claras y soporte</span></li>
+          </ul>
+
+          <div class="flex flex-wrap gap-3 pt-2">
+            <!-- Botones del mismo color (outline naranja) -->
+            <a href="#proyectos" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold border-2 border-orange-600 text-orange-700 hover:bg-orange-50 transition">
+              Ver proyectos <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#publicaciones" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold border-2 border-orange-600 text-orange-700 hover:bg-orange-50 transition">
+              Ver publicaciones <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+            <!-- Contactarme en negrita (botón oscuro) -->
+            <a href="#contacto" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold bg-black text-white hover:bg-gray-900 transition">
+              Contactarme <i data-lucide="send" class="w-4 h-4"></i>
+            </a>
           </div>
         </div>
       </div>
